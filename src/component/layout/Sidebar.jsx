@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
 // Composant MenuItem
-function MenuItem({ href, children }) {
+function MenuItem({ href, children, onClose }) {
   return (
     <li>
       <a 
         href={href}
+        onClick={onClose}
         className="block py-2 px-3 sm:px-4 text-sm sm:text-base hover:bg-pink-100 hover:text-rose-500 transition-colors rounded"
       >
         {children}
@@ -15,7 +16,7 @@ function MenuItem({ href, children }) {
 }
 
 // Composant SubMenu
-function SubMenu({ title, items, isOpen, onToggle }) {
+function SubMenu({ title, items, isOpen, onToggle, onClose }) {
   return (
     <li>
       <button
@@ -33,7 +34,7 @@ function SubMenu({ title, items, isOpen, onToggle }) {
         isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
       }`}>
         {items.map((item, index) => (
-          <MenuItem key={index} href={item.href}>
+          <MenuItem key={index} href={item.href} onClose={onClose}>
             {item.label}
           </MenuItem>
         ))}
@@ -52,7 +53,7 @@ function MenuHeader({ title }) {
 }
 
 // Composant principal Sidebar
-export default function Sidebar() {
+export default function Sidebar({ onClose }) {
   const [openSubmenu, setOpenSubmenu] = useState(null);
 
   const toggleSubmenu = (index) => {
@@ -81,7 +82,7 @@ export default function Sidebar() {
         type: 'submenu',
         title: 'Informations',
         items: [
-          { href: '#', label: 'Nos Tarifs' },
+          
           { href: '#', label: 'Horaires' },
           { href: '#', label: 'Rendez-vous' }
         ]
@@ -99,7 +100,7 @@ export default function Sidebar() {
         {menuConfig.items.map((item, index) => {
           if (item.type === 'link') {
             return (
-              <MenuItem key={index} href={item.href}>
+              <MenuItem key={index} href={item.href} onClose={onClose}>
                 {item.label}
               </MenuItem>
             );
@@ -112,6 +113,7 @@ export default function Sidebar() {
                 items={item.items}
                 isOpen={openSubmenu === currentSubmenuIndex}
                 onToggle={() => toggleSubmenu(currentSubmenuIndex)}
+                onClose={onClose}
               />
             );
           }
