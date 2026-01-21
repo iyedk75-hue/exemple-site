@@ -11,7 +11,7 @@ export default function Header() {
           {/* Logo avec style Editorial */}
           <div className="flex items-center gap-2">
             <span className="text-xl sm:text-2xl font-bold text-gray-800">Beauté Divine</span>
-            <span className="text-xs sm:text-sm text-gray-500">by HTML5 UP</span>
+          
           </div>
 
         {/* Icônes réseaux sociaux */}
