@@ -6,7 +6,7 @@ function MenuItem({ href, children }) {
     <li>
       <a 
         href={href}
-        className="block py-2 px-4 hover:bg-pink-100 hover:text-rose-500 transition-colors rounded"
+        className="block py-2 px-3 sm:px-4 text-sm sm:text-base hover:bg-pink-100 hover:text-rose-500 transition-colors rounded"
       >
         {children}
       </a>
@@ -19,7 +19,7 @@ function SubMenu({ title, items, isOpen, onToggle }) {
   return (
     <li>
       <button
-        className={`w-full text-left py-2 px-4 hover:bg-pink-100 hover:text-rose-500 transition-colors rounded flex justify-between items-center ${
+        className={`w-full text-left py-2 px-3 sm:px-4 text-sm sm:text-base hover:bg-pink-100 hover:text-rose-500 transition-colors rounded flex justify-between items-center ${
           isOpen ? 'text-rose-500 bg-pink-50' : ''
         }`}
         onClick={onToggle}
@@ -29,7 +29,7 @@ function SubMenu({ title, items, isOpen, onToggle }) {
           ▼
         </span>
       </button>
-      <ul className={`ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-300 ${
+      <ul className={`ml-3 sm:ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-300 ${
         isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
       }`}>
         {items.map((item, index) => (
@@ -45,8 +45,8 @@ function SubMenu({ title, items, isOpen, onToggle }) {
 // Composant MenuHeader
 function MenuHeader({ title }) {
   return (
-    <div className="border-b border-pink-200 pb-4 mb-4">
-      <h2 className="text-2xl font-bold text-rose-500">{title}</h2>
+    <div className="border-b border-pink-200 pb-3 sm:pb-4 mb-3 sm:mb-4">
+      <h2 className="text-xl sm:text-2xl font-bold text-rose-500">{title}</h2>
     </div>
   );
 }
@@ -92,7 +92,7 @@ export default function Sidebar() {
   let submenuIndex = 0;
 
   return (
-    <nav className="w-64 bg-white shadow-xl h-full p-6 overflow-y-auto">
+    <nav className="w-56 sm:w-64 bg-white shadow-xl h-full p-4 sm:p-6 overflow-y-auto">
       <MenuHeader title={menuConfig.header} />
       
       <ul className="space-y-2">
