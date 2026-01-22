@@ -112,7 +112,7 @@ export default function Header() {
           className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden top-0"
           onClick={() => setIsSidebarOpen(false)}
         />
-        <aside className="fixed left-0 top-16 h-screen z-50 lg:hidden overflow-y-auto">
+        <aside className="fixed left-0 top-16 h-screen z-50 lg:hidden overflow-y-auto w-3/4 max-w-xs sm:max-w-sm shadow-xl">
           <Sidebar onClose={() => setIsSidebarOpen(false)} />
         </aside>
       </>
